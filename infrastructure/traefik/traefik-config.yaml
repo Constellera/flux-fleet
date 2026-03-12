@@ -1,0 +1,11 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik-config
+  namespace: kube-system
+# Enable experimental kubernetesGateways: https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml#L130
+spec:
+  values:
+    experimental:
+      kubernetesGateway:
+        enabled: true
