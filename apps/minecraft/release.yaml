@@ -1,0 +1,35 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: minecraft-server-release
+  namespace: minecraft
+spec:
+  releaseName: minecraft-server
+  chart:
+    spec:
+      chart: itzg/minecraft
+      sourceRef:
+        kind: HelmRepository
+        name: minecraft-server-charts
+  interval: 50m
+  install:
+    remediation:
+      retries: 3
+  # Default values
+  # https://github.com/itzg/minecraft-server-charts/blob/master/charts/minecraft/values.yaml
+  values:
+    minecraftServer:
+      eula: true
+      type: PAPER
+      version: "1.21.11" # Locks it to a stable 2026 version
+      difficulty: hard
+      memory: 12G
+      # G1GC is the best garbage collector for Minecraft
+      jvmOpts: "-XX:+UseG1GC -XX:MaxGCPauseMillis=50"
+      # This uses the Oracle Linux node's IP for access
+      #serviceType: NodePort
+      #nodePort: 30000
+    persistence:
+      dataDir:
+        enabled: true
+        size: 20Gi
