@@ -1,0 +1,29 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: gateway-minecraft
+  namespace: minecraft
+spec:
+  gatewayClassName: traefik
+  listeners:
+    - name: minecraft-port
+      protocol: TCP
+      port: 25565
+      allowedRoutes:
+        kinds:
+          - kind: TCPRoute
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: minecraft-route
+  namespace: minecraft
+spec:
+  parentRefs:
+    - name: gateway-minecraft
+      sectionName: minecraft-port
+  rules:
+    - backendRefs:
+      - name: mc-server-minecraft
+        port: 25565

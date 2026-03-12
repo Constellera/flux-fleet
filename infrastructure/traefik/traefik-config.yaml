@@ -6,6 +6,15 @@ metadata:
 # Enable experimental kubernetesGateways: https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml#L130
 spec:
   valuesContent: |-
+    providers:
+      kubernetesGateways:
+        enabled: true
+        experimentalChannel: true
     experimental:
       kubernetesGateway:
         enabled: true
+    ports:
+      minecraft:
+        port: 25565
+        exposedPort: 25565
+        protocol: TCP
