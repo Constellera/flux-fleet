@@ -1,16 +1,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: minecraft-server-release
+  name: minecraft-prod
   namespace: minecraft
 spec:
-  releaseName: minecraft-server
+  releaseName: mc-server
   chart:
     spec:
-      chart: itzg/minecraft
+      chart: minecraft
       sourceRef:
         kind: HelmRepository
-        name: minecraft-server-charts
+        name: itzg
+        namespace: minecraft
   interval: 50m
   install:
     remediation:
