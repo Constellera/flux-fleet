@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
 # Enable experimental kubernetesGateways: https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml#L130
 spec:
-  values:
+  valuesContent: |
     experimental:
       kubernetesGateway:
         enabled: true
