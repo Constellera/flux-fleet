@@ -3,4 +3,6 @@ kind: Kustomization
 
 resources:
   - traefik-config.yaml
+  # Already created by default in Treafik when Gateway is enabled
   # - gateway.yaml
+  - experimental-install.yaml
