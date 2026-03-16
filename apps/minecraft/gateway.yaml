@@ -22,7 +22,7 @@ metadata:
 spec:
   parentRefs:
     - name: gateway-minecraft
-      sectionName: minecraft-port
+      sectionName: minecraft
   rules:
     - backendRefs:
       - name: mc-server-minecraft
