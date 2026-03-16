@@ -24,7 +24,7 @@ spec:
       type: PAPER
       version: "1.21.11" # Locks it to a stable 2026 version
       difficulty: hard
-      memory: 1G
+      memory: 3G
       # G1GC is the best garbage collector for Minecraft
       jvmOpts: "-XX:+UseG1GC -XX:MaxGCPauseMillis=50"
       # This uses the Oracle Linux node's IP for access
