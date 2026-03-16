@@ -7,7 +7,7 @@ metadata:
 spec:
   gatewayClassName: traefik
   listeners:
-    - name: minecraft
+    - name: minecraft-port
       protocol: TCP
       port: 25565
       allowedRoutes:
@@ -21,8 +21,8 @@ metadata:
   namespace: minecraft
 spec:
   parentRefs:
-    - name: gateway-minecraft
-      sectionName: minecraft
+    - name: minecraft-gateway
+      sectionName: minecraft-port
   rules:
     - backendRefs:
       - name: mc-server-minecraft
